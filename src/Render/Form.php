@@ -63,6 +63,6 @@ class Form extends HTML
         }
         $this->formEleCount++;
         $this->nodes[] = $formEle;
-        $this->children = &$this->nodes[$this->formEleCount];
+        $this->children = &$this->nodes[$this->formEleCount-1];
     }
 }
