@@ -24,6 +24,7 @@ class FormEle extends HTML
         // Declared by Input
         public null|string|Stringable|Stream|self $value = '',  // The value of the input
         public null|string|Stringable|Stream|self $name = '',  // The name of the input
+        public null|string|Stringable|Stream|self $label = '',  // The label of the input
     ) {
         if ($attributes instanceof Attribute) {
             $attributes = $attributes->toArray();
