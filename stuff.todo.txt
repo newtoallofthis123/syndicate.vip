@@ -1,0 +1,3 @@
+2024-03-29 (C) come up with all the dashboard elements we might make @ideas @tasks
+x 2024-03-29 (A) setup the project setup @tasks
+2024-03-29 (A) Complete the dashboard.txt @tasks +Syndicate
