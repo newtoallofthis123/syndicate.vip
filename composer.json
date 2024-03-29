@@ -42,25 +42,25 @@
 				"approach-wild"
 			],
 			"src/Render/": [
-				"Syndicate/render"
+				"syndicate/render"
 			],
 			"src/Component/": [
-				"Syndicate/component"
+				"syndicate/component"
 			],
 			"src/Composition/": [
-				"Syndicate/composition"
+				"syndicate/composition"
 			],
 			"src/Imprint/": [
-				"Syndicate/imprint"
+				"syndicate/imprint"
 			],
 			"src/Resource/": [
-				"Syndicate/resource"
+				"syndicate/resource"
 			],
 			"src/Service/": [
-				"Syndicate/service"
+				"syndicate/service"
 			],
 			"static/": [
-				"Syndicate/static"
+				"syndicate/static"
 			]
 		}
 	},
