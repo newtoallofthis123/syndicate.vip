@@ -44,8 +44,8 @@ class Button extends FormEle {
         }
 
         $this->attributes['link'] = $link;
-        $this->attributes['width'] = $width;
-        $this->attributes['height'] = $height;
+        $this->styles['width'] = $width;
+        $this->styles['height'] = $height;
     }
 
 }
