@@ -4,15 +4,15 @@ namespace Syndicate\Render;
 
 require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 
-use Approach\Render\Attribute;
 use Approach\Approach\Container;
-use Approach\Render\Container as RenderContainer;
+use Approach\Render\Attribute;
 use Approach\Render\HTML;
 use Approach\Render\Node;
 use Approach\Render\Stream;
 use Stringable;
 
-class Button extends FormEle {
+class Button extends FormEle
+{
     public function __construct(
         public null|string|Stringable $id = null,
         null|string|array|Node|Attribute $classes = null,
@@ -22,11 +22,10 @@ class Button extends FormEle {
         public bool $prerender = false,
         public bool $selfContained = false,
         // Button stuff
-        public null|string|Stringable|Stream $placeholder = "",
-        public null|string|Stringable|Stream $link = "!#",
-        public null|string|Stringable|Stream $width = "30",
-        public null|string|Stringable|Stream $height = "10",
-        
+        public null|string|Stringable|Stream $placeholder = '',
+        public null|string|Stringable|Stream $link = '!#',
+        public null|string|Stringable|Stream $width = '30',
+        public null|string|Stringable|Stream $height = '10',
         // public null|string|Stringable|Stream $img = ""
     ) {
         parent::__construct(
@@ -47,5 +46,4 @@ class Button extends FormEle {
         $this->styles['width'] = $width;
         $this->styles['height'] = $height;
     }
-
 }

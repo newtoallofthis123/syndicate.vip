@@ -43,7 +43,7 @@ class TabBar extends HTML
     /**
      * @param array<int, HTML|Tab> $tabs
      */
-    public function fromArray(array $tabs)
+    public function fromArray(array $tabs): void
     {
         foreach ($tabs as $tab) {
             $this->addTab($tab);
