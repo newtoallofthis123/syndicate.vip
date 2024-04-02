@@ -1,0 +1,20 @@
+.TabGroup {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: row;
+}
+
+.TabGroup .visual {
+    border: 1px solid black;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+.TabGroup .TabContent {
+    display: none;
+}
+
+.TabGroup .visible {
+    display: block;
+}

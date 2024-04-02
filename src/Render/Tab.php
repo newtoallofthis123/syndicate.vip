@@ -13,7 +13,7 @@ require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 class Tab extends HTML
 {
     public function __construct(
-        public null|string|Stringable $tag = 'button',
+        public null|string|Stringable $tag = 'div',
         public null|string|Stringable $id = null,
         null|string|array|Node|Attribute $classes = null,
         public null|array|Attribute $attributes = new Attribute,
@@ -23,9 +23,9 @@ class Tab extends HTML
         public bool $selfContained = false,
         // Specific to Tab
         public null|string|Stringable|HTML|TabVisual $visual = '',
-        public null|string|Stringable|Stream $activates = '',
-        public null|string|Stringable|Stream $chainer = '',
     ) {
+        $classes[] = 'Tab';
+
         parent::__construct(
             tag: $tag,
             id: $id,
@@ -37,8 +37,7 @@ class Tab extends HTML
             selfContained: $selfContained,
         );
 
-        $this->attributes['tab-chain'] = $chainer;
-        $this->attributes['data-activates'] = $activates;
         $this->nodes[] = $visual;
+        $visual = &$this->nodes[count($this->nodes) - 1];
     }
 }
