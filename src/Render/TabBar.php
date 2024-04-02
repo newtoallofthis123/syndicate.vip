@@ -12,8 +12,6 @@ require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 
 class TabBar extends HTML
 {
-    private $tabCount = 0;
-
     public function __construct(
         public null|string|Stringable $tag = 'div',
         public null|string|Stringable $id = null,
@@ -72,9 +70,8 @@ class TabBar extends HTML
      */
     public function addTab($tab): void
     {
-        $this->tabCount++;
         $this->nodes[] = $tab;
-        $this->tabs = &$this->nodes[$this->tabCount - 1];
+        $this->tabs = &$this->nodes[count($this->nodes) - 1];
     }
 
     /**
@@ -82,8 +79,7 @@ class TabBar extends HTML
      */
     public function addTabContent($tab): void
     {
-        $this->tabCount++;
         $this->nodes[] = $tab;
-        $this->tabs = &$this->nodes[$this->tabCount - 1];
+        $this->tabs = &$this->nodes[count($this->nodes) - 1];
     }
 }

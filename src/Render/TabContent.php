@@ -20,6 +20,7 @@ class TabContent extends HTML
         public array $styles = [],
         public bool $prerender = false,
         public bool $selfContained = false,
+        public null|string|Node|Attribute|Stringable $activationId = '',
     ) {
         $classes[] = 'TabContent';
         parent::__construct(
@@ -32,5 +33,7 @@ class TabContent extends HTML
             prerender: $prerender,
             selfContained: $selfContained,
         );
+
+        $this->attributes['data-activationId'] = $activationId;
     }
 }
