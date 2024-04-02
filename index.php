@@ -4,10 +4,7 @@ namespace Syndicate;
 require_once __DIR__ . '/support/lib/vendor/autoload.php';
 
 use Approach\Render\HTML;
-use Syndicate\Render\Tab;
-use Syndicate\Render\TabBar;
-use Syndicate\Render\TabContent;
-use Syndicate\Render\TabVisual;
+use Syndicate\Render\ProgressBar;
 
 $html = new HTML(tag: 'html');
 $html[] = $head = new HTML(tag: 'head');
@@ -16,6 +13,14 @@ $head[] = new HTML(tag: 'link', attributes: [
     'type' => 'text/css',
     'href' => '/static/css/tab.css',
 ], selfContained: true);
-$head[] = $body = new HTML(tag: 'body');
+
+$html[] = $body = new HTML(tag: 'body');
+
+$visual = new HTML(tag: 'div', content: 'This is the visual');
+$color = 'red';
+
+$progress = new ProgressBar(tag: 'div', visual: $visual, color: $color);
+
+$body[] = $progress;
 
 echo $html;
