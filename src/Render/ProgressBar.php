@@ -37,6 +37,6 @@ class ProgressBar extends HTML
 
         $this->nodes[] = new HTML(tag: 'div', classes: ['Bar', ' Colored']);
         $this->nodes[] = $visual;
-        $visual = &$this->nodes[count($this->nodes) - 1];
+        $this->visual = &$this->nodes[count($this->nodes) - 1];
     }
 }
