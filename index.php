@@ -7,6 +7,7 @@ use Syndicate\Render\Tab;
 use Syndicate\Render\TabBar;
 use Syndicate\Render\TabContent;
 use Syndicate\Render\TabVisual;
+use Approach\Render\HTML;
 
 $html = new HTML(tag: 'html');
 $html[] = $head = new HTML(tag: 'head');
