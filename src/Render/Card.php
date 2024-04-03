@@ -12,6 +12,7 @@ use Stringable;
 
 class Card extends FormEle {
     public function __construct (
+        public null|string|Stringable $tag = 'div',
         public null|string|Stringable $id = null,
         null|string|array|Node|Attribute $classes = null,
         public null|array|Attribute $attributes = new Attribute,
@@ -47,7 +48,8 @@ class Card extends FormEle {
             $this->attributes['img'] = $img;
         }
         $this->attributes['link'] = $link;
-        $this->styles['width'] = $width;
-        $this->styles['height'] = $height;
+        $this->attributes['width'] = $width;
+        $this->attributes['height'] = $height;
+
     }
 }

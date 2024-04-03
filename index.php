@@ -3,6 +3,7 @@ namespace Syndicate;
 
 require_once __DIR__ . '/support/lib/vendor/autoload.php';
 
+use Syndicate\Render\Card;
 use Syndicate\Render\Tab;
 use Syndicate\Render\TabBar;
 use Syndicate\Render\TabVisual;
