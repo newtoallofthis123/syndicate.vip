@@ -12,8 +12,6 @@ require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 
 class TabBar extends HTML
 {
-    private $tabCount = 0;
-
     public function __construct(
         public null|string|Stringable $tag = 'div',
         public null|string|Stringable $id = null,
@@ -25,7 +23,11 @@ class TabBar extends HTML
         public bool $selfContained = false,
         // TabBar related stuff
         public null|array|Container $tabs = null,
+        public null|array|Container $tabContents = null,
     ) {
+        $classes[] = 'Screen';
+        $classes[] = ' TabGroup';
+
         parent::__construct(
             tag: $tag,
             id: $id,
@@ -38,9 +40,11 @@ class TabBar extends HTML
         );
 
         $this->fromArray($tabs);
+        $this->fromContentArray($tabContents);
     }
 
     /**
+     * Add Tabs by the Array
      * @param array<int, HTML|Tab> $tabs
      */
     public function fromArray(array $tabs): void
@@ -51,12 +55,31 @@ class TabBar extends HTML
     }
 
     /**
+     * Add Tabs by the Array
+     * @param array<int, HTML|TabContent> $tabContents
+     */
+    public function fromContentArray(array $tabContents): void
+    {
+        foreach ($tabContents as $tab) {
+            $this->addTabContent($tab);
+        }
+    }
+
+    /**
      * @param Tab|HTML $tab
      */
     public function addTab($tab): void
     {
-        $this->tabCount++;
         $this->nodes[] = $tab;
-        $this->tabs = &$this->nodes[$this->tabCount - 1];
+        $this->tabs = &$this->nodes[count($this->nodes) - 1];
+    }
+
+    /**
+     * @param Tab|HTML $tab
+     */
+    public function addTabContent($tab): void
+    {
+        $this->nodes[] = $tab;
+        $this->tabs = &$this->nodes[count($this->nodes) - 1];
     }
 }
