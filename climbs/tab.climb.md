@@ -1,100 +1,99 @@
-# Orchestrated Climbs:
+# Tab HTMl Structure Climb
 
 ## Destination
 
-Implementing a tab interface for the syndicate dashboard, 
-that should be easy to implement, yet be customizable to the core
+Define the HTML structure for a tab.
 
 ## Survey Environment
 
-The following a viable approachs:
+### Parallel Labels
 
-### Make a tab Imprint:
+In this approach, we would be using a combination of labels and content
+This can be generalized as a tree structure as follows
 
-- Would have very good UX
-- Needs a good idea using the imprint layer in order to effectively implement.
-- The imprint layer can simplify the process quite a bit by the effective use of
-iterators and tokens, which would be quite powerful.
+- Tabs
+    - Labels
+    - Content
 
-**Viability**
+This can be represented as semantic HTML:
 
-[x] Rejected since none of us has a good idea of imprint
+```html
+<div class="tabs">
+    <div class="labels">
+    </div>
+    <div class="content">
+    </div>
+</div>
 
+```
 
-### Make Different Tab Classes
+These labels and content blocks can exist almost in parallel and this can
+ideally allow the user to enter in the content block directly when futhure implemented
 
-- Would be theoritically easy to implement.
-- The idea by nature would require the modulization of the class, helping the user
-maintain clarity while making / using the tabs UI.
+Also, this would make manipulation using JS or using Approach Modules a lot simplier
+as it almost establishes a heirarchial structure.
 
-#### Implementation of Tabs in classes
+**Obstacles**:
 
-The most logical implementation would be one of the following:
+- Dynamic Conversion might be a bit difficult. 
+- Proper mechanisms have to be established to keep track of the content blocks
 
-**Have three classes: TabBar, Tab and TabContent:**
+[TICK] Viable Approach
 
-- This would entail having the tabbar, the main parent container, which would
-encapsulate / hold the whole of the TabsUI
+### Attribute Tracking
 
-- Then, the  array of `Tab`'s', which would have a tab button made up of a 
-visual class can be in another container.
+In this method, a the labels and content are treated as almost seperate blocks, corealted 
+only together using a common attribute value, that can either be decided by the user 
+or predetermined to whatever makes sense: `tab-activates`
 
-- Then, the a container having different tab content classes, which hold the actual 
-content that the userland want to have in a particular tab can be held
+This would look as follows in semantic HTML:
 
-- The tabs would all be in a container and the content in another. However, an effective
-way to essentially allow them to talk to each other can be discussed.
+```html
+<div class="Tabs">
+    <div class="labels">
+        <div class="label" tab-activates="1"></div>
+        <div class="label" tab-activates="2"></div>
+    </div>
+    <div class="content">
+        <div class="contentBox" tab-activated="1"></div>
+        <div class="contentBox" tab-activated="2"></div>
+    </div>
+</div>
+```
 
-- Two ways they can:
-    1. Using a pure js + id prefix approach (Would add another dependency layer)
-    2. Using a common `tab-chainer` which would make chainer and associating the tabs a bit easier
+The `tab-activates` attribute corelates the label and content together
+essentially having a way to keep track
 
-    Out of the two approachs, the second one seems to be the most logical
+**Obstacles**:
 
-- Only one tabcontent would be active based on it's `tab-activated` attribute
-that can be controlled as the user wants
+- JS manipulation would be complicated by attribute manipulation
+- Since the structure itself doesn't have to strict, it would be a double edged sword:
+    More user power, but harder to maintain a coherent natural structure
+- Attributes have to be baked into the dynamic HTML, constricting the user and
+    having the possibilty of more errors
 
-- A few drawbacks of this would be the fact that the userland as well as the developer
-has to use and maintain 3 different classes, each intricate with attributes and all 
-in order for this to work
+[TICK] Viable
 
-**Viability**
+### Simple Label Tracking
 
-- Seems quite viable. This would need only the use of standard HTML and Container classes
-in the Approach/Render.
+This is very similar to the first method, the only difference being, the html structure
+or the subsequent class doesn't in fact track the label, rather the label is more symbolically
 
-## Review Findings
+The semantic HTML structure would look something like this:
 
-The second approach seems like a viable choice.
-It provides an easy implementation while being pragmatic and modular.
-So it makes sense
+```html
+<div class="Tabs">
+    <div class="Tab">
+        <div class="content"></div>
+    </div>
+</div>
+```
 
-### Time:
+**Obstacles**:
 
-About 3 days for planning, execution and testing
+- Harder to maintain a coherent structure
+- Dynamic Implementation would have an over head tracking system to keep track of the content
+- JS manipulation would be very hard
+- Not the most easily stylable
 
-### Budget: ~
-
-### Resource Use:
-
-Me
-
-### Tasks:
-
-1. Design Climb Specs for Tab
-2. Come up with vague implementation of the classes
-3. Write the indivisual classes
-4. Write the integration
-5. Test
-
-## Climb
-
-Started work on a priliminary work on the classes.
-They seem to work quite well
-
-It is overall implemented into 3 classes:
-1. `Tab`: Contains the actual tab button
-2. `TabContent`: Contains the tab content along with the activation sequence
-3. `TabBar`: Encapsulates the Tab and TabContent
-
-ONGOING STILL
+[IN DOUBT]
