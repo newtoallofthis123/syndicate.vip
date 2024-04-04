@@ -3,11 +3,11 @@ namespace Syndicate;
 
 require_once __DIR__ . '/support/lib/vendor/autoload.php';
 
+use Approach\Render\HTML;
 use Syndicate\Render\Tab;
 use Syndicate\Render\TabBar;
 use Syndicate\Render\TabContent;
 use Syndicate\Render\TabVisual;
-use Approach\Render\HTML;
 
 $html = new HTML(tag: 'html');
 $html[] = $head = new HTML(tag: 'head');
@@ -30,4 +30,6 @@ $tabcontent2 = new TabContent(activationId: '13');
 
 $tabbar = new TabBar(tag: 'div', tabs: [$tab1, $tab2], tabContents: [$tabcontent1, $tabcontent2]);
 
-echo $tabbar;
+$body[] = $tabbar;
+
+echo $html;
