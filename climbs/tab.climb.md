@@ -1,4 +1,4 @@
-# Tab HTMl Structure Climb
+# Tab HTML Structure Climb
 
 ## Destination
 
@@ -97,3 +97,24 @@ The semantic HTML structure would look something like this:
 - Not the most easily stylable
 
 [IN DOUBT]
+
+## Review
+
+- This review was done in collaboration with the team members 
+- After discussion and consideration as above, the idea presented in survey idea #1 has been decided to
+be the most viable
+
+## Work
+
+- After discussion, we were able to decide which HTMl structure would
+be dynamically implemented.
+- This is the final implementation / structure
+
+```html
+<div class="tabs">
+    <div class="labels">
+    </div>
+    <div class="content">
+    </div>
+</div>
+```
