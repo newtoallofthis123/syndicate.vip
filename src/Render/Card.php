@@ -5,8 +5,6 @@ namespace Syndicate\Render;
 require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 
 use Approach\Render\Attribute;
-use Approach\Render\Container;
-use Approach\Render\HTML as RenderContainer;
 use Approach\Render\Node;
 use Approach\Render\Stream;
 use Stringable;
