@@ -43,4 +43,22 @@ the close option etc
 ### Dropdown Button
 
 This would essentially be a button that has an embedded dropdown that would can be
-binded to a different action can be manipulated by the use;
+binded to a different action can be manipulated by the use
+
+This could also act as a dropdown in general as well
+
+**Obstacles**:
+
+- Design the structure for the dropdown arrangement
+
+### Tabs
+
+Tabs would enable the userland to make and design functional dashboard that are modular.
+The tabs would be containers with logic that would also make them associated to particular buttons
+which would "activate" them, ie display them on the main screen
+
+**Obstacles**:
+
+- Design the Structure of the tab arrangement
+- Come up with how to associate the button and the tab
+- Make the JS implementation simple
