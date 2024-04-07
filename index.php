@@ -1,7 +1,9 @@
 <?php
+
 namespace Syndicate;
 
 require_once __DIR__ . '/support/lib/vendor/autoload.php';
+require_once 'tablecontent.php';
 
 use Approach\Render\HTML;
 use Syndicate\Render\Tab;
@@ -17,7 +19,7 @@ $head[] = new HTML(tag: 'link', attributes: [
     'href' => '/static/css/tab.css',
 ], selfContained: true);
 
-$html[] = $body = new HTML(tag: 'body');
+$textarea = new TextArea(placeholder: "wow", rows: 10, cols: 5);
 
 $visual = new TabVisual(tag: 'div', content: 'Button1', activates: '12');
 $visual1 = new TabVisual(tag: 'div', content: 'Button2', activates: '13');
