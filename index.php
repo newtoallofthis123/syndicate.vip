@@ -5,46 +5,33 @@ namespace Syndicate;
 require_once __DIR__ . '/support/lib/vendor/autoload.php';
 require_once 'tablecontent.php';
 
-use Syndicate\Render\Form;
-use Syndicate\Render\Input;
-use Syndicate\Render\Table;
-use Syndicate\Render\TableStructure;
-use Syndicate\Render\TextArea;
-use Syndicate\Render\Table2;
+use Approach\Render\HTML;
+use Syndicate\Render\Tab;
+use Syndicate\Render\TabBar;
+use Syndicate\Render\TabContent;
+use Syndicate\Render\TabVisual;
 
-$input = new Input(value: '12@wow.com', type: 'email', name: 'email');
-$form = new Form();
+$html = new HTML(tag: 'html');
+$html[] = $head = new HTML(tag: 'head');
+$head[] = new HTML(tag: 'link', attributes: [
+    'rel' => 'stylesheet',
+    'type' => 'text/css',
+    'href' => '/static/css/tab.css',
+], selfContained: true);
 
 $textarea = new TextArea(placeholder: "wow", rows: 10, cols: 5);
 
-$form->addFormEle($input);
-$form->addFormEle($textarea);
+$visual = new TabVisual(tag: 'div', content: 'Button1', activates: '12');
+$visual1 = new TabVisual(tag: 'div', content: 'Button2', activates: '13');
 
-$table2 = require 'tablecontent.php';
+$tab1 = new Tab(visual: $visual);
+$tab2 = new Tab(visual: $visual1);
 
-$tableStructure = new TableStructure();
-$table = new Table();
+$tabcontent1 = new TabContent(activationId: '12');
+$tabcontent2 = new TabContent(activationId: '13');
 
-$table->content = "
-    <tr>
-        <td>Row 1, Cell 1</td>
-        <td>Row 1, Cell 2</td>
-    </tr>
-    <br>
-    <tr>
-        <td>Row 2, Cell 1</td>
-        <td>Row 2, Cell 2</td>
-    </tr>
-    <br>
-    <tr>
-        <td>Row 3, Cell 1</td>
-        <td>Row 3, Cell 2</td>
-    </tr>
-";
+$tabbar = new TabBar(tag: 'div', tabs: [$tab1, $tab2], tabContents: [$tabcontent1, $tabcontent2]);
 
-echo $form . "<br>";
-echo $tableStructure . "<br>";
-echo $table . "<br>";
-echo $table2;
+$body[] = $tabbar;
 
-?>
+echo $html;
