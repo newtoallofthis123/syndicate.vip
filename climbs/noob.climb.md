@@ -50,6 +50,9 @@ This could also act as a dropdown in general as well
 **Obstacles**:
 
 - Design the structure for the dropdown arrangement
+- Hidden Input [type="hidden"]
+- Default selected attribute
+- The content would have to be independent from the functionality itself
 
 ### Tabs
 
