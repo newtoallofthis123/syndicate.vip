@@ -1,3 +1,3 @@
 # Syndicate.Vip
 
-The Premium Syndicate Dashboard ;)
+Components for the Syndicate Dashboard

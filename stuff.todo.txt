@@ -1,4 +1,0 @@
-x come up with all the dashboard elements we might make @ideas @tasks
-x setup the project setup @tasks
-x Complete the dashboard.txt @tasks +Syndicate
-x 2024-04-03 2024-04-01 (A) Implement the tabs UI

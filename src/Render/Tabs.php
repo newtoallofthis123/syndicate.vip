@@ -9,7 +9,7 @@ use Stringable;
 
 require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 
-class TabContent extends HTML
+class Tabs extends HTML
 {
     public function __construct(
         public null|string|Stringable $tag = 'div',
@@ -20,20 +20,5 @@ class TabContent extends HTML
         public array $styles = [],
         public bool $prerender = false,
         public bool $selfContained = false,
-        public null|string|Node|Attribute|Stringable $activationId = '',
-    ) {
-        $classes[] = 'TabContent';
-        parent::__construct(
-            tag: $tag,
-            id: $id,
-            classes: $classes,
-            attributes: $attributes,
-            content: $content,
-            styles: $styles,
-            prerender: $prerender,
-            selfContained: $selfContained,
-        );
-
-        $this->attributes['data-activationId'] = $activationId;
-    }
+    ) {}
 }
