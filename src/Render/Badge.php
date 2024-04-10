@@ -9,7 +9,7 @@ use Stringable;
 
 require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 
-class Tabs extends HTML
+class Badge extends HTML
 {
     public function __construct(
         public null|string|Stringable $tag = 'div',
@@ -22,3 +22,4 @@ class Tabs extends HTML
         public bool $selfContained = false,
     ) {}
 }
+
