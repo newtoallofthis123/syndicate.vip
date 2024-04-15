@@ -4,6 +4,7 @@ namespace Syndicate\Render;
 use Approach\Render\Attribute;
 use Approach\Render\HTML;
 use Approach\Render\Node;
+use Approach\Render\Streamability;
 use Approach\nullstate;
 use Stringable;
 use Traversable;
@@ -13,6 +14,8 @@ require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 class Tabs extends HTML
 {
     public const tag = 'div';
+
+    use Streamability;
 
     public function RenderHead(): Traversable
     {
@@ -24,7 +27,7 @@ class Tabs extends HTML
             } else {
                 $node_index = $this->getNodeLabelIndex($index);
                 $active = $this->getLabeledNode($node_index);
-                $button = new HTML(tag: 'button', content: $value);
+                $button = new HTML(tag: 'button', content: $index);
                 $active->attributes['data-tab'] = $value;
                 $buttonList[] = $button;
             }
