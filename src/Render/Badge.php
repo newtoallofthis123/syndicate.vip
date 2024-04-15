@@ -1,6 +1,7 @@
 <?php
 namespace Syndicate\Render;
 
+use Approach\Imprint\test\test\display;
 use Approach\Render\Attribute;
 use Approach\Render\HTML;
 use Approach\Render\Node;
@@ -25,7 +26,7 @@ class Badge extends HTML
         null|string|array|Node|Attribute $classes = null,
         public null|array|Attribute $attributes = new Attribute,
         public $content = null,
-        public array $styles = [],
+        public array $styles = ["display"=> "flex", "text-decoration"=> "none"],
         public bool $prerender = false,
         public bool $selfContained = false,
 

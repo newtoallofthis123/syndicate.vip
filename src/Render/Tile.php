@@ -15,27 +15,41 @@ class Tile extends HTML{
         public null|string|Stringable $id = null,
         null|string|array|Node|Attribute $classes = null,
         public null|array|Attribute $attributes = new Attribute,
-        public null|string|Stringable|Stream|self $content = null,
-        public array $styles = [],
+        public $content = null,
+        public array $styles = [
+            ""
+        ],
         public bool $prerender = false,
         public bool $selfContained = false,
         //tile stuff
-        public null|string|Stringable|stream $href = '',
-        public null|string|Stringable|stream $title = ''
+        public null|string|Stringable|stream|self $icon = '',
+        public null|string|Stringable|stream|self $title = ''
     ) {
         parent::__construct(
             tag: $tag,
             id: $id,
-            classes: $classes,
-            attributes: $attributes,
+            classes: ['Tile'],
+            attributes: [],
             content: $content,
-            styles: $styles,
+            styles: [],
             prerender: $prerender,
             selfContained: $selfContained,
         );
-        $this->classes[] = 'tile';
-        $maindiv = new HTML(tag:'div' , attributes: ['classes' => 'some classes']);    
-        $link = new HTML(tag:'a' , attributes: ['href' => $this->href]);
+
+        $this->nodes['button'] = new HTML(tag: 'button', classes: ['content']);
+        $button = &$this->nodes['button'];
+        $button->nodes['icon'] = $icon;
+        $this->icon = &$button->nodes['icon'];
+        $button->nodes['title'] = new HTML(tag: 'h1', content: $title);
+        $this->title = &$button->nodes['title'];
     }
 }
-// 
+
+/*
+<div class="Tile">
+  <button class="content">
+    <h1>$title</h1>
+    ...$icon
+  </button>
+</div>
+*/
