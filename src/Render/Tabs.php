@@ -4,6 +4,7 @@ namespace Syndicate\Render;
 use Approach\Render\Attribute;
 use Approach\Render\HTML;
 use Approach\Render\Node;
+use Approach\nullstate;
 use Stringable;
 use Traversable;
 
@@ -16,12 +17,17 @@ class Tabs extends HTML
     public function RenderHead(): Traversable
     {
         $buttonList = new HTML(tag: 'ul');
-        foreach ($this->_node_labels[0] as $value => $index) {
-            $node_index = $this->getNodeLabelIndex($index);
-            $active = $this->getLabeledNode($node_index);
-            $button = new HTML(tag: 'button', content: $value);
-            $active->attributes['data-tab'] = $value;
-            $buttonList[] = $button;
+        foreach ($this->_node_labels as $value => $index) {
+            if ($index instanceof nullstate) {
+                echo 'Value not found in node labels: ' . $value . ' <br/>' . PHP_EOL;
+                continue;
+            } else {
+                $node_index = $this->getNodeLabelIndex($index);
+                $active = $this->getLabeledNode($node_index);
+                $button = new HTML(tag: 'button', content: $value);
+                $active->attributes['data-tab'] = $value;
+                $buttonList[] = $button;
+            }
         }
 
         $this->prefix = $buttonList->render();
