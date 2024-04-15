@@ -3,21 +3,16 @@
 namespace Syndicate;
 
 use Approach\Render\HTML;
-use Syndicate\Render\Badge;
-use Syndicate\Render\Tile;
+use Syndicate\Render\Tabs;
 
 require_once __DIR__ . '/support/lib/vendor/autoload.php';
 
 $html = new HTML('html');
-$html[] = $head = new HTML('head');
-$head[] = new HTML('link', attributes: ["href" => "static/css/Badge.css", "rel" => "stylesheet"]);
-$head[] = new HTML('link', attributes: ["href" => "static/css/tile.css", "rel" => "stylesheet"]);
 
-$tile = new Tile(title: "Google", icon: new HTML(tag: 'div', content: "✨"));
+$tabs = new Tabs();
+$tabs['nice'] = new HTML(tag: 'div', content: 'Hello Wolrd');
 
-$badge = new Badge(name: "Key", value: "Value", link: "#");
-
-$html[] = $badge;
-$html[] = $tile;
+$html[] = $tabs;
 
 echo $html;
+
