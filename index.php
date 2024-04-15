@@ -2,36 +2,22 @@
 
 namespace Syndicate;
 
-require_once __DIR__ . '/support/lib/vendor/autoload.php';
-require_once 'tablecontent.php';
-
 use Approach\Render\HTML;
-use Syndicate\Render\Tab;
-use Syndicate\Render\TabBar;
-use Syndicate\Render\TabContent;
-use Syndicate\Render\TabVisual;
+use Syndicate\Render\Badge;
+use Syndicate\Render\Tile;
 
-$html = new HTML(tag: 'html');
-$html[] = $head = new HTML(tag: 'head');
-$head[] = new HTML(tag: 'link', attributes: [
-    'rel' => 'stylesheet',
-    'type' => 'text/css',
-    'href' => '/static/css/tab.css',
-], selfContained: true);
+require_once __DIR__ . '/support/lib/vendor/autoload.php';
 
-$textarea = new TextArea(placeholder: "wow", rows: 10, cols: 5);
+$html = new HTML('html');
+$html[] = $head = new HTML('head');
+$head[] = new HTML('link', attributes: ["href" => "static/css/Badge.css", "rel" => "stylesheet"]);
+$head[] = new HTML('link', attributes: ["href" => "static/css/tile.css", "rel" => "stylesheet"]);
 
-$visual = new TabVisual(tag: 'div', content: 'Button1', activates: '12');
-$visual1 = new TabVisual(tag: 'div', content: 'Button2', activates: '13');
+$tile = new Tile(title: "Google", icon: new HTML(tag: 'div', content: "✨"));
 
-$tab1 = new Tab(visual: $visual);
-$tab2 = new Tab(visual: $visual1);
+$badge = new Badge(name: "Key", value: "Value", link: "#");
 
-$tabcontent1 = new TabContent(activationId: '12');
-$tabcontent2 = new TabContent(activationId: '13');
-
-$tabbar = new TabBar(tag: 'div', tabs: [$tab1, $tab2], tabContents: [$tabcontent1, $tabcontent2]);
-
-$body[] = $tabbar;
+$html[] = $badge;
+$html[] = $tile;
 
 echo $html;

@@ -9,31 +9,47 @@ use Stringable;
 
 require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 
-class TabContent extends HTML
-{
+class Tile extends HTML{
     public function __construct(
         public null|string|Stringable $tag = 'div',
         public null|string|Stringable $id = null,
         null|string|array|Node|Attribute $classes = null,
         public null|array|Attribute $attributes = new Attribute,
-        public null|string|Stringable|Stream|self $content = null,
-        public array $styles = [],
+        public $content = null,
+        public array $styles = [
+            ""
+        ],
         public bool $prerender = false,
         public bool $selfContained = false,
-        public null|string|Node|Attribute|Stringable $activationId = '',
+        //tile stuff
+        public null|string|Stringable|stream|self $icon = '',
+        public null|string|Stringable|stream|self $title = ''
     ) {
-        $classes[] = 'TabContent';
         parent::__construct(
             tag: $tag,
             id: $id,
-            classes: $classes,
-            attributes: $attributes,
+            classes: ['Tile'],
+            attributes: [],
             content: $content,
-            styles: $styles,
+            styles: [],
             prerender: $prerender,
             selfContained: $selfContained,
         );
 
-        $this->attributes['data-activationId'] = $activationId;
+        $this->nodes['button'] = new HTML(tag: 'button', classes: ['content']);
+        $button = &$this->nodes['button'];
+        $button->nodes['icon'] = $icon;
+        $this->icon = &$button->nodes['icon'];
+        $button->nodes['title'] = new HTML(tag: 'h1', content: $title);
+        $this->title = &$button->nodes['title'];
     }
 }
+
+/*
+<div class="Tile">
+  <button class="content">
+    <h1>$title</h1>
+    ...$icon
+  </button>
+</div>
+*/

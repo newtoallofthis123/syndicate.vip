@@ -1,0 +1,17 @@
+.Tile{
+    padding: 2px;
+}
+
+.Tile button{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.Tile h1{
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    font-weight: 400;
+}
