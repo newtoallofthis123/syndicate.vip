@@ -36,12 +36,17 @@ class Tile extends HTML{
             selfContained: $selfContained,
         );
 
-        $this->nodes['button'] = new HTML(tag: 'button', classes: ['content']);
-        $button = &$this->nodes['button'];
-        $button->nodes['icon'] = $icon;
-        $this->icon = &$button->nodes['icon'];
-        $button->nodes['title'] = new HTML(tag: 'h1', content: $title);
-        $this->title = &$button->nodes['title'];
+        // $this->nodes['button'] = new HTML(tag: 'button', classes: ['content']);
+        // $button = &$this->nodes['button'];
+        // $button->nodes['icon'] = $icon;
+        // $this->icon = &$button->nodes['icon'];
+        // $button->nodes['title'] = new HTML(tag: 'h1', content: $title);
+        // $this->title = &$button->nodes['title'];
+        $this->button = new HTML(tag: 'button', classes: ['content']);
+        $this->button->nodes['icon'] = $icon;
+        $this->icon = &$this->button->nodes['icon'];
+        $this->button->nodes['title'] = new HTML(tag: 'h1' , content: $title);
+        $this->title = &$this->button->nodes['title'];
     }
 }
 
