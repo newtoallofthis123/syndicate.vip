@@ -5,19 +5,11 @@ use Approach\Render\Attribute;
 use Approach\Render\HTML;
 use Approach\Render\Node;
 use Stringable;
-use Traversable;
 
 require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 
 class Badge extends HTML
 {
-    public function RenderHead(): Traversable
-    {
-        foreach (parent::RenderHead() as $value) {
-            yield $value;
-        }
-    }
-
     public function __construct(
         public null|string|Stringable $tag = 'div',
         public null|string|Stringable $id = null,
