@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Tests\Unit;
 
 use Syndicate\Render\Badge;
@@ -10,25 +9,10 @@ class BadgeCest
 {
     public function badgeTest(UnitTester $I)
     {
-        $badge = new Badge(tag: 'div');
-        $link = "https://github.com/mrohith29";
-        $badge[] = $link;
-        $name = "link";
-        $badge[] = $name;
-        $value = "github";
-
-        $badge[] = $value;
-
+        $badge = new Badge(tag: 'div', name: 'Hello!', value: 'World!', link: 'https://youtube.com');
         $expected = <<<HTML
-            <div class="Badge">
-                <div class="name">
-                    <a href="$link">$name</a>
-            <   /div>
-                <div class="val">
-                    <a href="$link">$value</a>
-                </div>
-            </div>
-        HTML;
+            <div class="Badge"><span><a href="https://youtube.com">Hello!</a></span><span><a href="https://youtube.com">World!</a></span></div>
+            HTML;
         $I->assertEquals($expected, $badge);
     }
 }

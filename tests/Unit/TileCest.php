@@ -2,26 +2,20 @@
 
 namespace Test\Unit;
 
+use Approach\Render\HTML;
 use Syndicate\Render\Tile;
 use Tests\Support\UnitTester;
 
 class TileCest
 {
-    public function tryTestTiles(UnitTester $I)
+    public function tilesTest(UnitTester $I)
     {
-        $tile = new Tile(tag: 'div');
-        $title = 'google';
-        $tile[] = $title;
-        $icon = new Tile(tag: 'div', content: '✨');
-        $tile[] = $icon;
+        $title = 'Google';
+        $icon = new HTML(tag: 'div', content: '✨');
+        $tile = new Tile(tag: 'div', title: $title, icon: $icon);
 
         $expected = <<<HTML
-                <div class="Tile">
-                    <button class="content">
-                        <div>✨</div>
-                        <h1>google</h1>
-                    </button>  
-                </div>
+            <div class="Tile"><button class="content"><div>✨</div><h1>Google</h1></button></div>
             HTML;
         $I->assertEquals($expected, $tile);
     }

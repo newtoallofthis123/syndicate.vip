@@ -19,7 +19,7 @@ class Tabs extends HTML
 
     public function RenderHead(): Traversable
     {
-        $buttonList = new HTML(tag: 'ul');
+        $buttonList = new HTML(tag: 'div', classes: ['Buttons']);
         foreach ($this->_node_labels as $value => $index) {
             if ($index instanceof nullstate) {
                 echo 'Value not found in node labels: ' . $value . ' <br/>' . PHP_EOL;
@@ -27,8 +27,8 @@ class Tabs extends HTML
             } else {
                 $node_index = $this->getNodeLabelIndex($index);
                 $active = $this->getLabeledNode($node_index);
-                $button = new HTML(tag: 'button', content: $index);
-                $active->attributes['data-tab'] = $value;
+                $button = new HTML(tag: 'button', classes: ['tabs-btn'], content: $index);
+                $active->attributes['data-tab'] = $index;
                 $buttonList[] = $button;
             }
         }
@@ -40,8 +40,9 @@ class Tabs extends HTML
     }
 
     public function __construct(
+        public null|string|Stringable $tag = 'div',
         public null|string|Stringable $id = null,
-        null|string|array|Node|Attribute $classes = null,
+        null|string|array|Node|Attribute $classes = ['Tabs'],
         public null|array|Attribute $attributes = new Attribute,
         public $content = null,
         public array $styles = [],

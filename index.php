@@ -3,16 +3,15 @@
 namespace Syndicate;
 
 use Approach\Render\HTML;
-use Syndicate\Render\Tabs;
+use Syndicate\Render\Tile;
 
 require_once __DIR__ . '/support/lib/vendor/autoload.php';
 
 $html = new HTML('html');
 
-$tabs = new Tabs();
-$tabs['nice'] = new HTML(tag: 'div', content: 'Hello Wolrd');
-$tabs['wow'] = new HTML(tag: 'div', content: 'Hi');
-
-$html[] = $tabs;
+$title = 'Google';
+$icon = new HTML(tag: 'div', content: '✨');
+$tile = new Tile(tag: 'div', title: $title, icon: $icon);
+$html[] = $tile;
 
 echo $html;

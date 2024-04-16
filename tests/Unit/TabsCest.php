@@ -18,24 +18,7 @@ class TabsCest
         $tabs['Hi'] = new HTML(tag: 'div', content: 'Well so is this');
         $tabs['Nice'] = new HTML(tag: 'div', content: 'Tabs div');
         $expected = <<<HTML
-            <div class="Tabs">
-                <div class="Buttons">
-                    <div class="tabs-btn btn-activated">Hello</div>
-                    <div class="tabs-btn">Hi</div>
-                    <div class="tabs-btn">Nice</div>
-                </div>
-                <div class="Contents">
-                    <div class="activated">
-                        This is such a cool div
-                    </div>
-                    <div>
-                        Well so is this
-                    </div>
-                    <div>
-                        Tabs div
-                    </div>
-                </div>
-            </div> 
+            <div class="Tabs"><div class="Buttons"><button class="tabs-btn">Hello</button><button class="tabs-btn">Hi</button><button class="tabs-btn">Nice</button></div><div class="activated" data-tab="Hello">This is such a cool div</div><div data-tab="Hi">Well so is this</div><div data-tab="Nice">Tabs div</div></div>
             HTML;
         $I->assertEquals($expected, $tabs);
     }

@@ -24,7 +24,7 @@ class Badge extends HTML
         null|string|array|Node|Attribute $classes = null,
         public null|array|Attribute $attributes = new Attribute,
         public $content = null,
-        public array $styles = ['display' => 'flex', 'text-decoration' => 'none'],
+        public array $styles = [],
         public bool $prerender = false,
         public bool $selfContained = false,
         public null|Node|Stringable|string|self $name = '',
@@ -42,21 +42,12 @@ class Badge extends HTML
             selfContained: $selfContained,
         );
 
-        $name_div = new HTML(tag: 'span');
-        $name_div['link'] = new HTML(tag: 'a', attributes: ['href' => $link], content: $name);
-        $value_div = new HTML(tag: 'span');
-        $value_div['link'] = new HTML(tag: 'a', attributes: ['href' => $link], content: $value);
-        $this->nodes['name'] = $name_div;
+        $this->nodes['name'] = new HTML(tag: 'span');
+        $this->nodes['name']['link'] = new HTML(tag: 'a', attributes: ['href' => $link], content: $this->name);
         $this->name = &$this->nodes['name'];
-        $this->nodes['value'] = $value_div;
+
+        $this->nodes['value'] = new HTML(tag: 'span');
+        $this->nodes['value']['link'] = new HTML(tag: 'a', attributes: ['href' => $link], content: $this->value);
         $this->value = &$this->nodes['value'];
     }
 }
-
-// Styles have to look like
-
-/*
- * .badge { display: inline-block; //other container styles }
- * .badge span:first-child{ // key styles }
- * .badge span:last-child{ // value styles }
- */

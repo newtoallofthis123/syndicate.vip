@@ -9,21 +9,21 @@ use Stringable;
 
 require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 
-class Tile extends HTML{
+class Tile extends HTML
+{
+    public null|string|Stringable|Stream|self $button = '';
+
     public function __construct(
         public null|string|Stringable $tag = 'div',
         public null|string|Stringable $id = null,
         null|string|array|Node|Attribute $classes = null,
         public null|array|Attribute $attributes = new Attribute,
         public $content = null,
-        public array $styles = [
-            ""
-        ],
+        public array $styles = [],
         public bool $prerender = false,
         public bool $selfContained = false,
-        //tile stuff
-        public null|string|Stringable|stream|self $icon = '',
-        public null|string|Stringable|stream|self $title = ''
+        public null|string|Stringable|Stream|self $icon = '',
+        public null|string|Stringable|Stream|self $title = ''
     ) {
         parent::__construct(
             tag: $tag,
@@ -36,25 +36,10 @@ class Tile extends HTML{
             selfContained: $selfContained,
         );
 
-        // $this->nodes['button'] = new HTML(tag: 'button', classes: ['content']);
-        // $button = &$this->nodes['button'];
-        // $button->nodes['icon'] = $icon;
-        // $this->icon = &$button->nodes['icon'];
-        // $button->nodes['title'] = new HTML(tag: 'h1', content: $title);
-        // $this->title = &$button->nodes['title'];
-        $this->button = new HTML(tag: 'button', classes: ['content']);
-        $this->button->nodes['icon'] = $icon;
-        $this->icon = &$this->button->nodes['icon'];
-        $this->button->nodes['title'] = new HTML(tag: 'h1' , content: $title);
-        $this->title = &$this->button->nodes['title'];
+        $this->nodes['button'] = new HTML(tag: 'button', classes: ['content']);
+        $this->nodes['button']['icon'] = $icon;
+        $this->icon = &$this->nodes['button']['icon'];
+        $this->nodes['button']['title'] = new HTML(tag: 'h1', content: $title);
+        $this->title = &$this->nodes['button']['title'];
     }
 }
-
-/*
-<div class="Tile">
-  <button class="content">
-    <h1>$title</h1>
-    ...$icon
-  </button>
-</div>
-*/
