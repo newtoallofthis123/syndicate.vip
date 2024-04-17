@@ -50,5 +50,6 @@ class Tile extends HTML
         $this->icon = &$this->nodes['button']['icon'];
         $this->nodes['button']['title'] = new HTML(tag: 'h1', content: $title);
         $this->title = &$this->nodes['button']['title'];
+        $this->button = &$this->nodes['button'];
     }
 }
