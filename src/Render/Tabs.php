@@ -11,6 +11,18 @@ use Traversable;
 
 require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 
+/*
+ * Tabs:
+ *
+ * A easy implementation of the tabs UI in Render
+ * Auto generates a button tree using the node labels provided
+ *
+ * Example:
+ *
+ * $tabs = new Tabs();
+ * $tabs['Btn1'] = new HTML(tag: 'div', content: 'Hello World');
+ * $tabs['Btn2'] = new HTML(tag: 'div', content: 'Cool One');
+ */
 class Tabs extends HTML
 {
     public const tag = 'div';

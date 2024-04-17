@@ -9,6 +9,15 @@ use Stringable;
 
 require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 
+/*
+ * Tile
+ *
+ * Implements a Tile in Render, has an icon and a Title
+ *
+ * Example:
+ *
+ * $tile = new Tile(title: "Google", icon: $icon);
+ */
 class Tile extends HTML
 {
     public null|string|Stringable|Stream|self $button = '';

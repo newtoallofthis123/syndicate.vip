@@ -8,6 +8,15 @@ use Stringable;
 
 require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 
+/*
+ * Badge:
+ *
+ * Generates a very simple Badge, with clickable link that encompasses the badge
+ *
+ * Example:
+ *
+ * $badge = new Badge(tag: 'div', name: 'Key', value: 'Value', link: 'https://approach.io')
+ */
 class Badge extends HTML
 {
     public function __construct(
