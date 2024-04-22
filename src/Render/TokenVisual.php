@@ -51,18 +51,5 @@ class TokenVisual extends HTML
 
         $this->nodes['source_url'] = new HTML(tag: "a", attributes: ["href" => $this->source_url], content: $this->source_url);
         $this->source_url = &$this->nodes['source_url'];
-
-class TokenVisual extends HTML
-{
-    public function __construct(
-        public null|Node|Stringable|string|self $name = '',
-        public null|Node|Stringable|string|self $value = '',
-        public null|Node|Stringable|string|self $sourceUrl = '',
-        public null|Node|Stringable|string|self $title = '',
-    ) {
-        parent::__construct(
-            tag: 'div'
-        );
-
     }
 }
