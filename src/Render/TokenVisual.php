@@ -6,7 +6,7 @@ use Approach\Render\Attribute;
 use Approach\Render\HTML;
 use Approach\Render\Node;
 use Stringable;
-
+use Traversable;
 require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 
 
@@ -21,7 +21,22 @@ require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
  */
 class TokenVisual extends HTML
 {
+    public function RenderHead(): Traversable
+    {
+        $this->prefix .= 'ticket'.$this->prefix;
+        $this->attributes['title'] = $this->title;
+        $this->title = &$this->attributes['title'];
+
+        foreach (parent::RenderHead() as $value) {
+            yield $value;
+        }
+    }
+
     public function __construct(
+        public null|string|Stringable $tag = 'div',
+        public null|string|Stringable $id = null,
+        null|string|array|Node|Attribute $classes = ['Tabs'],
+        public null|array|Attribute $attributes = new Attribute,
         public $content = null,
         public array $styles = [],
         public bool $prerender = false,
@@ -33,13 +48,17 @@ class TokenVisual extends HTML
         public null|Node|Stringable|string|self $icon = '🎟️',
     ) {
         parent::__construct(
+            tag: $tag,
+            id: $id,
+            classes: $classes,
+            attributes: $attributes,
             content: $content,
             styles: $styles,
             prerender: $prerender,
             selfContained: $selfContained,
         );
 
-        $this->prefix .= $this->icon . $this->prefix;
+        $this->prefix .= $this->icon . $this->prefix; 
         $this->content .= ' token.';
         $this->attributes['title'] = $this->content;
 
