@@ -1,29 +1,29 @@
 .Badge span {
-    border: 2px solid black;
-    border-radius: 9px;
-    padding-right: 2px;
-    color: white;
-    font-size: 10px;
-    padding: 5px;
-    font-weight: bold;
-    columns: 8;
+  border: 2px solid black;
+  border-radius: 9px;
+  padding-right: 2px;
+  color: white;
+  font-size: 10px;
+  padding: 5px;
+  font-weight: bold;
+  columns: 8;
 }
 
 .Badge span:first-child {
-    background-color: green;
-    color: white;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+  background-color: green;
+  color: white;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .Badge span:last-child {
-    background-color: rgb(2, 191, 238);
-    color: white;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+  background-color: rgb(2, 191, 238);
+  color: white;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .Badge span a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
