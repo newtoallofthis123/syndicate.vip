@@ -10,7 +10,6 @@ class TokenVisualCest
     public function tokenVisualTest(UnitTester $I)
     {
         $tokenVisual = new TokenVisual(
-            tag: 'token', 
             name: 'Hello!', 
             value: 'World!', 
             source_url: 'https://youtube.com'

@@ -20,10 +20,6 @@ require_once __DIR__ . '/../../support/lib/vendor/autoload.php';
 class TokenVisual extends HTML
 {
     public function __construct(
-        public null|string|Stringable $tag = 'div',
-        public null|string|Stringable $id = null,
-        null|string|array|Node|Attribute $classes = null,
-        public null|array|Attribute $attributes = new Attribute,
         public $content = null,
         public array $styles = [],
         public bool $prerender = false,
@@ -32,19 +28,16 @@ class TokenVisual extends HTML
         public null|Node|Stringable|string|self $name = '',
         public null|Node|Stringable|string|self $value = '',
         public null|Node|Stringable|string|self $source_url = '',
+        public null|Node|Stringable|string|self $icon = '🎟️',
     ) {
         parent::__construct(
-            tag: $tag,
-            id: $id,
-            classes: ['TokenVisual'],
-            attributes: $attributes,
             content: $content,
             styles: $styles,
             prerender: $prerender,
             selfContained: $selfContained,
         );
 
-        $this->prefix .= '🎟️'.$this->prefix;
+        $this->prefix .= $this->icon . $this->prefix;
         $this->content .= ' token.';
         $this->attributes['title'] = $this->content;
 
