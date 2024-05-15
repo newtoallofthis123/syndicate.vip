@@ -16,7 +16,6 @@ Approach.Clipboard = function( config = {}) {
         console.log("init Clipboard", $elf.config);
 
         $( $elf.config.container ).on("code.clipboard", dispatch.code );
-        $( $elf.config.container ).on("copy.clipboard", dispatch.code );
 
         console.groupEnd();
     };
