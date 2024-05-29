@@ -1,10 +1,10 @@
-addScopeJS(["Approach", "Clipboard"], {});
+addScopeJS(["Approach", "Clipboard", "main"], {});
 
-Approach.Clipboard = function( config = {}) {
+Approach.Clipboard.main = function( config = {}) {
     let $elf = {};
     $elf.config = {
-        controls: $(".Clipboard").children(".controls"),
-        container: $(".Clipboard")
+        controls: ".Clipboard .controls",
+        container: ".Clipboard",
     };
     overwriteDefaults(config, $elf.config);
 
@@ -15,7 +15,7 @@ Approach.Clipboard = function( config = {}) {
         console.groupCollapsed("Clipboard init");
         console.log("init Clipboard", $elf.config);
 
-        $( $elf.config.container ).on("code.clipboard", dispatch.code );
+        $($elf.config.container).on("click.clipboard", dispatch.code);
 
         console.groupEnd();
     };
@@ -32,8 +32,8 @@ Approach.Clipboard = function( config = {}) {
     let dispatch = {
             code:function(e){
                 // when code button is pressed
-                let textToCopy = e.target.getAttribute('data-code');
-                navigator.clipboard.writeText(textToCopy).then(function() {
+                let textToCopy = $(`${$elf.config.container}`).find("#copyText").val();
+                navigator.clipboard.writeText(textToCopy).then(function () {
                     console.log('Copying to Clipboard');
                 }, function(err) {
                     console.log('Could not copy text: ', err);
@@ -41,7 +41,8 @@ Approach.Clipboard = function( config = {}) {
             },
             copy:function(e){
                 // when copy button is pressed
-                let textToCopy = e.target.getAttribute('data-copy');
+                console.log("hii")                 
+                let textToCopy = $(e.target).closest("figure").children("ins").text() //e.target.getAttribute('data-copy');
                 navigator.clipboard.writeText(textToCopy).then(function() {
                     console.log('Copying to clipboard');
                 }, function(err) {
@@ -54,7 +55,7 @@ Approach.Clipboard = function( config = {}) {
     return $elf;
 };
 
-export let Clipboard = Approach.Clipboard;
+export let Clipboard = Approach.Clipboard.main;
 
 /// Example HTML : 
 /// to do

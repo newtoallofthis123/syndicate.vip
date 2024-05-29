@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- <script type='text/javascript' src="/static/js/approach/approach.interface.js"></script> -->
+    <script type='text/javascript' src="/static/js/approach/approach.utility.js"></script>
+    <script src="/static/js/copy/copytext.js"></script>
+    <script type="module">
+        import { Clipboard } from "/static/js/copy/copytext.js";
+        
+        addScopeJS(['Approach','Clipboard', 'main'], {});
+        
+        Approach.Clipboard.main = new Clipboard({})
+        </script>
+   
+</head>
+<body class="Interface InterfaceContent">
+    <div class="Clipboard controls">
+        <textarea id="copyText">Some text to copy</textarea>
+        <button class="controls" data-action="copy.clipboard">Copy</button>
+    </div>
+</body>
+</html>
